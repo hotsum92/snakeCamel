@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function snakeCamel() {
+    cat - | sed -E 's/_([a-z])/\U\1/g'
+}
+
+function camelSnake() {
+    cat - | sed -E 's/([A-Z])/_\L\1/g'
+}
+
+while read line; do
+  if [[ $line =~ _ ]]; then
+    echo $line | snakeCamel
+  else
+    echo $line | camelSnake
+  fi
+done
