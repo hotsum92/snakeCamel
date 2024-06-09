@@ -5,7 +5,7 @@ function snakeCamel() {
 }
 
 function camelSnake() {
-    cat - | sed -E 's/([A-Z])/_\L\1/g'
+    cat - | sed -E 's/([a-z])([A-Z])/\1_\L\2/g; s/^(.)/\L\1/; s/([\t ])(.)/\1\L\2/;'
 }
 
 while read line; do
